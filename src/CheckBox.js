@@ -7,7 +7,7 @@ function App () {
   const[second,setSecond]=useState(true);
 
   const handleChange=(data)=>{
-    if(data==="first")
+    if(data ==="first")
     {
       if(first===true){
         console.log(data,"our value")

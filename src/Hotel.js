@@ -69,6 +69,7 @@ export default function Hotel() {
       setChildrenArr(new Array(0).fill(0));
       setRoomArr(new Array(0).fill(0));
   };
+  
 
 
   //Children Age
@@ -104,9 +105,12 @@ export default function Hotel() {
       setRoomNumber(rooms);
   };
   const handleAnotherRoom = () => {
-    setGuestNumber(children + adults);
-    setRoomNumber(rooms);
-};
+    setAdults(0);
+      setRooms(0);
+      setChildren(0);
+      setChildrenArr(new Array(0).fill(0));
+      setRoomArr(new Array(0).fill(0));
+  };
   return (
       <><div>
         
@@ -151,6 +155,14 @@ export default function Hotel() {
                   </div>
               </div>
           </div>
+          <div>
+              {rooms >= 6 && (
+                  <div rooms={rooms}>
+                      <p className='text3'>Big group? Try for 6+ rooms</p>
+                  </div>
+              )}
+          </div>
+
           {childrenArr.length >= 1 && (
               <div children={children}>
                   <span className='text2' style={{fontSize:"12px",color:"black"}}>CHILD AGE:</span><span className='text3' style={{fontSize:"12px"}}>12Y and below</span>
@@ -182,50 +194,6 @@ export default function Hotel() {
                   );
               })}
           </div>
-          {roomArr.length >= 1 && (
-              <div rooms={rooms}>
-                  <span className='text2' style={{fontSize:"12px",color:"black"}}>Room Count:</span>
-              </div>
-          )}
-
-          <div>
-          <div rooms={rooms}>
-              {roomArr.map((el, index) => {
-                  console.log(index);
-                  return (
-                      <select className='select' style={{margin:"5px"}}
-                          onChange={handleRoomCount}
-                          defaultValue={0}
-                          name={`${index + 1}select`}
-                      >
-                          <option value={0}>0</option>
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                          <option value={6}>6</option>
-                          <option value={7}>7</option>
-                          <option value={8}>8</option>
-                          <option value={9}>9</option>
-                          <option value={10}>10</option>
-                          <option value={11}>11</option>
-                          <option value={12}>12</option>
-                      </select>
-                  );
-              })}
-          </div>
-
-          </div>
-          <div>
-              {rooms >= 6 && (
-                  <div rooms={rooms}>
-                      <p className='text3'>Big group? Try for 6+ rooms</p>
-                  </div>
-              )}
-          </div>
-
-          
           <div className="col">
               <div className="row">
                  <div children={children}>
@@ -233,20 +201,20 @@ export default function Hotel() {
                     <button onClick={handleReset} className="reset" style={{width:"50px",height:"20px",marginRight:"10px"}}>
                           Reset
                     </button>
-                    <button onClick={handleApply} className="reset" style={{width:"50px",height:"20px",marginRight:"10px"}}>
+                    <button onClick={handleApply} className="apply" style={{width:"50px",height:"20px",marginRight:"10px"}}>
                           Apply
                     </button>
-                    <button onClick={handleAnotherRoom} className="reset" style={{width:"80px",height:"20px",marginRight:"10px"}}>
-                          Add Room
+                    <button onClick={handleRoomsAdd} disabled ={rooms === 10} className="add" style={{width:"80px",height:"20px",marginRight:"10px"}}>
+                          AddRoom
                     </button>
-
+                    </div>
                     </div>
 
 
              </div>     
           </div>
           
-        </div>
+        
 </>
 );
 }

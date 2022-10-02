@@ -7,28 +7,6 @@ import NewTodoForm from "./NewTodoForm";
 
 
 function App() {
-    const [userInput, setUserInput] = useReducer(
-        (state, newState) => ({ ...state, ...newState }),
-        {
-          task: ""
-        }
-      );
-      const handleChange = evt => {
-        setUserInput({ [evt.target.name]: evt.target.value });
-      };
-      
-      const handleSubmit = evt => {
-        evt.preventDefault();
-        const newRoom = { id: uuidv4(), task: userInput.task, completed: false };
-        createTodo(newRoom);
-        setUserInput({ task: "" });
-      };  
-    
-
-
-    const { v4: uuidv4 } = require('uuid');
-    const [todos, setTodos] = useState([
-]);
       const create = newRoom => {
         console.log(newRoom);
         setTodos([...todos, newRoom]);
